@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="Music.View.MusicIndexView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Music.View"
+             xmlns:exten="clr-namespace:Controls.Exten;assembly=Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="555" d:DesignWidth="852">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="502*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Row="0" Grid.Column="0">
+            <DockPanel DockPanel.Dock="Top" Margin="0,10,20,5">
+                <TextBlock Text="发现音乐" FontFamily="Nirmala UI" FontSize="12"  Foreground="Gray" DockPanel.Dock="Left" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="Searchbox" Text="搜索" DockPanel.Dock="Right" Width="220" HorizontalAlignment="Right" Style="{DynamicResource SearchBox}" BorderBrush="#ffcccccc"
+                          Background="#ffffffff" VerticalAlignment="Center" Height="28" exten:TextBoxHelper.TextCommand="{Binding SearchCommand}"/>
+                
+            </DockPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="0,5,0,0">
+                <RadioButton Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0"  FontSize="16" FontFamily="Nirmala UI">精选</RadioButton>
+                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI">排行</RadioButton>
+                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI">歌单</RadioButton>
+                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI">电台</RadioButton>
+            </StackPanel>
+        </DockPanel>
+        <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding Marvellous}">
+        </ContentControl>
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Width="{Binding ElementName=Searchbox,Path=Width}"
+                 HorizontalAlignment="Right" Margin="0,38,20,0" Visibility="{Binding ElementName=Searchbox,Path=IsKeyboardFocused,Mode=OneWay,Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border Background="AntiqueWhite" VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="0.5,0,0.5,0.5">
+                <StackPanel x:Name="HotPanle">
+                    <Border>
+                        <TextBlock Text="热门搜索" FontFamily="Nirmala UI" ></TextBlock>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+    
+</UserControl>

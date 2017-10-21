@@ -1,0 +1,27 @@
+﻿<Window x:Class="Controls.StyleTestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Controls"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:exten="clr-namespace:Controls.Exten"
+        mc:Ignorable="d"
+        Title="StyleTestWindow" Height="300" Width="300" SizeChanged="StyleTestWindow_OnSizeChanged">
+    <Grid x:Name="Grid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer  CanContentScroll="True" VerticalScrollBarVisibility="Disabled">
+            <exten:ScrollPanel  x:Name="ScrollPanel">
+                <StackPanel x:Name="Panel">
+
+                    <TextBlock Text="dsadsa" Margin="0,100,0,0" Height="800" ></TextBlock>
+                </StackPanel>
+
+            </exten:ScrollPanel>
+        </ScrollViewer>
+<exten:TaNewScrollBar Grid.Column="1" ScrollPanel="{Binding ElementName=ScrollPanel}"></exten:TaNewScrollBar>
+    </Grid>
+</Window>

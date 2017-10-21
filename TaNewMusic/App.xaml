@@ -1,0 +1,19 @@
+<Application x:Class="TaNewMusic.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:TaNewMusic" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Controls;component/Themes/Generic.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="/Controls;component/Themes/BaseStyle.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="/Controls;component/Themes/MetroProgressBar.xaml">
+        </ResourceDictionary>
+        <ResourceDictionary Source="/Controls;component/Themes/TaNewScrollBar.xaml">
+
+        </ResourceDictionary>
+                <ResourceDictionary Source="/Controls;component/Themes/TransitioningContentControl.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="/Controls;component/Themes/FlipView.xaml"></ResourceDictionary>
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
