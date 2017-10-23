@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using GalaSoft.MvvmLight.Threading;
 using Microsoft.Practices.Unity;
 using Music.View;
 using NetMusic;
@@ -79,7 +80,10 @@ namespace Music.ViewModel
             getHotKey.BeginInvoke((ar =>
             {
                 var resu = getHotKey.EndInvoke(ar);
-                HotKey.AddRange(resu);
+                DispatcherHelper.CheckBeginInvokeOnUI((() =>
+                {
+                    HotKey.AddRange(resu);
+                }));
             }), null);
         }
         

@@ -3,13 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:local="clr-namespace:Music.View"
              xmlns:exten="clr-namespace:Controls.Exten;assembly=Controls"
+             xmlns:viewModel="clr-namespace:Music.ViewModel"
+             xmlns:convert="clr-namespace:Music.Converter"
              mc:Ignorable="d" 
              d:DesignHeight="555" d:DesignWidth="852">
     <UserControl.Resources>
+
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"></BooleanToVisibilityConverter>
+        <convert:SearchPanelVisibilityConvert x:Key="PanelVisibilityConvert"></convert:SearchPanelVisibilityConvert>
     </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded" SourceName="border"/>
+    </UserControl.Triggers>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,7 +31,7 @@
                 <TextBlock Text="发现音乐" FontFamily="Nirmala UI" FontSize="12"  Foreground="Gray" DockPanel.Dock="Left" VerticalAlignment="Center"></TextBlock>
                 <TextBox x:Name="Searchbox" Text="搜索" DockPanel.Dock="Right" Width="220" HorizontalAlignment="Right" Style="{DynamicResource SearchBox}" BorderBrush="#ffcccccc"
                           Background="#ffffffff" VerticalAlignment="Center" Height="28" exten:TextBoxHelper.TextCommand="{Binding SearchCommand}"/>
-                
+
             </DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="0,5,0,0">
                 <RadioButton Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0"  FontSize="16" FontFamily="Nirmala UI">精选</RadioButton>
@@ -35,15 +43,57 @@
         <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding Marvellous}">
         </ContentControl>
         <StackPanel Grid.Row="0" Grid.RowSpan="2" Width="{Binding ElementName=Searchbox,Path=Width}"
-                 HorizontalAlignment="Right" Margin="0,38,20,0" Visibility="{Binding ElementName=Searchbox,Path=IsKeyboardFocused,Mode=OneWay,Converter={StaticResource BooleanToVisibilityConverter}}">
-            <Border Background="AntiqueWhite" VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="0.5,0,0.5,0.5">
+                 HorizontalAlignment="Right" Margin="0,38,20,0">
+            <StackPanel.Visibility>
+                <MultiBinding Converter="{StaticResource PanelVisibilityConvert}">
+                    <Binding ElementName="Searchbox" Path="IsKeyboardFocused"></Binding>
+                    <Binding ElementName="Searchbox" Path="Text"></Binding>
+                </MultiBinding>
+            </StackPanel.Visibility>
+            <Border  Background="White" VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="0.5,0,0.5,0.5">
                 <StackPanel x:Name="HotPanle">
-                    <Border>
-                        <TextBlock Text="热门搜索" FontFamily="Nirmala UI" ></TextBlock>
+                    <Border x:Name="border" Background="#ffcccccc">
+                        <TextBlock Text="热门搜索" FontFamily="Nirmala UI" FontSize="14" Margin="0,2"></TextBlock>
                     </Border>
+                    <ItemsControl x:Name="ItemsControl" ItemsSource="{Binding HotKey}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Tag="{Binding SearchCommand}">
+                        <!--控件模板-->
+                        <ItemsControl.Template>
+                            <ControlTemplate TargetType="ItemsControl">
+                                <Border BorderBrush="#ffcccccc" BorderThickness="1">
+                                    <ItemsPresenter/>
+                                </Border>
+                            </ControlTemplate>
+                        </ItemsControl.Template>
+                        <!--子元素的布局面板-->
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <!--每个元素的数据模板-->
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border x:Name="border" BorderThickness="1" BorderBrush="#ffcccccc"  Margin="3" Background="White">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="PreviewMouseDown">
+                                            <i:InvokeCommandAction Command="{Binding ElementName=ItemsControl,Path=Tag}"
+                                                                    CommandParameter="{Binding ElementName=KeyText,Path=Text}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <TextBlock x:Name="KeyText" VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding}"
+                                               Margin="2" ></TextBlock>
+                                </Border>
+                                <DataTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True" SourceName="border">
+                                        <Setter Property="Background" TargetName="border" Value="#ffcccccc"/>
+                                    </Trigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </StackPanel>
             </Border>
         </StackPanel>
     </Grid>
-    
+
 </UserControl>
