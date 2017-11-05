@@ -54,4 +54,32 @@ namespace Music.Converter
             throw new NotImplementedException();
         }
     }
+    
+    public class SearchPanelConvert:IMultiValueConverter
+    {
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values[0] is Visibility&&values[1] is bool)
+            {
+                if ((Visibility)values[0]==Visibility.Collapsed)
+                {
+                    return Visibility.Collapsed;
+                }
+                else
+                {
+                    if ((bool)values[1])
+                    {
+                        return Visibility.Visible;
+                    }
+                    return Visibility.Collapsed;
+                }
+            }
+            return Visibility.Collapsed;
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

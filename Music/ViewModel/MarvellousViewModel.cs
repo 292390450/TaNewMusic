@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Threading;
 using Microsoft.Practices.Unity;
 using NetMusic;
 using NetMusic.Mode;

@@ -13,6 +13,8 @@ namespace NetMusic.Mode
     public class TopList:INotifyPropertyChanged
     {
         #region 变量
+
+        private HttpClientHelper _helper;
         private ObservableCollection<Song> _songs;
         private string _date;
         private string _name;

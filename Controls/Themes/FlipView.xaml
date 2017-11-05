@@ -55,8 +55,8 @@
                         </Border>
                         <Button x:Name="PART_BackButton"
                                 HorizontalAlignment="Left"
-                                VerticalAlignment="Center" Visibility="Collapsed"
-                                Style="{DynamicResource ControlButton}">
+                                VerticalAlignment="Center" Visibility="Collapsed" Style="{DynamicResource ControlButton}"
+                                >
                             <Path Canvas.Left="15.9063"
                                   Canvas.Top="14.75"
                                   Width="16"
@@ -67,8 +67,8 @@
                         </Button>
                         <Button x:Name="PART_ForwardButton"
                                 HorizontalAlignment="Right"
-                                VerticalAlignment="Center" Visibility="Collapsed"
-                                Style="{DynamicResource ControlButton}">
+                                VerticalAlignment="Center" Visibility="Collapsed" Style="{DynamicResource ControlButton}"
+                               >
                             <Path Canvas.Left="15.9063"
                                   Canvas.Top="14.75"
                                   Width="16"
@@ -111,12 +111,12 @@
                           VerticalAlignment="Bottom"
                           Panel.ZIndex="6"
                           Background="{DynamicResource BlackBrush}"
-                          Opacity="0.85">
+                          Opacity="0.85" Visibility="Hidden">
                         <Label x:Name="PART_BannerLabel"
                                FontFamily="{TemplateBinding FontFamily}"
                                FontSize="{TemplateBinding FontSize}"
                                Foreground="{DynamicResource WhiteBrush}"
-                               IsTabStop="False" />
+                               IsTabStop="False" Visibility="Hidden"/>
                     </Grid>
 
                     <control:TransitioningContentControl x:Name="PART_Presenter"
@@ -211,7 +211,7 @@
                         <ControlTemplate TargetType="Button">
                             <Border Padding="1"
                                     BorderBrush="{TemplateBinding Background}"
-                                    CornerRadius="4">
+                                    CornerRadius="4" Width="0.1" Height="0.1">
                                 <Grid Background="{TemplateBinding Background}">
                                     <Label HorizontalAlignment="Center"
                                            VerticalAlignment="Center"
@@ -231,6 +231,15 @@
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Width" Value="50" />
+            </Style>
+            <Style x:Key="ContrBtn" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="1" Height="1"></Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
             </Style>
             <Storyboard x:Key="ShowBannerStoryboard">
                 <DoubleAnimation AccelerationRatio="1.0"

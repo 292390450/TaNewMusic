@@ -17,6 +17,9 @@ namespace CommonTest
     {
         static void Main(string[] args)
         {
+            var resss= SearchApi.GetKeySuggest("李");
+            var str = MusicApi.GetKeySuggesUrl("修炼爱情");
+            var ss = HttpClientHelper.GetAsync(str).Result;
             var swe = MusicApi.GetHotKey();
             var sdsad = HttpClientHelper.GetAsync(swe).Result;
             var sds = AlbumApi.InitBriefInfoAlbumAsync("2265047").Result;
@@ -42,8 +45,7 @@ namespace CommonTest
             {
                 
             }
-            var str = MusicApi.GetKeySuggesUrl("林俊");
-            var ss = HttpClientHelper.GetAsync(str).Result;
+        
             var s = MusicApi.GetMusicianUrl(1, 200,NetMusic.Mode.MusicianType.cn_man,"L");
                 
             var tt = HttpClientHelper.GetAsync(s).Result;

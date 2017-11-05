@@ -4,7 +4,7 @@
       <ResourceDictionary.MergedDictionaries>
           <ResourceDictionary Source="Themes/TaNewScrollBar.xaml"></ResourceDictionary>
         <ResourceDictionary Source="Themes/BaseStyle.xaml">
-          
+ 
         </ResourceDictionary>
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>

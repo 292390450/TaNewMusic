@@ -13,7 +13,10 @@
         </ResourceDictionary>
                 <ResourceDictionary Source="/Controls;component/Themes/TransitioningContentControl.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="/Controls;component/Themes/FlipView.xaml"></ResourceDictionary>
-      </ResourceDictionary.MergedDictionaries>
+          <ResourceDictionary Source="/Controls;component/Themes/ListBoxStyle.xaml"></ResourceDictionary>
+          <ResourceDictionary Source="/Controls;component/Themes/Colors.xaml"></ResourceDictionary>
+          <ResourceDictionary Source="/Controls;component/Themes/BlueColors.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </Application.Resources>
 </Application>

@@ -122,12 +122,12 @@
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden"
                                           VerticalScrollBarVisibility="Hidden" Grid.ColumnSpan="1" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin"
                                            VerticalAlignment="Center" Margin="4,0"/>
-                            <Button x:Name="SearchBtn"  Grid.Column="1" Width="Auto" d:LayoutOverrides="Height" Background="Transparent" BorderThickness="0" Style="{StaticResource ButtonBase}" Command="{TemplateBinding exten:TextBoxHelper.TextCommand}" CommandParameter="{TemplateBinding Text}"> 
+                            <Button x:Name="SearchBtn"  Grid.Column="1" Width="Auto" d:LayoutOverrides="Height" Background="Transparent" BorderThickness="0" Style="{StaticResource ButtonBase}" Command="{TemplateBinding exten:TextBoxHelper.TextCommand}" CommandParameter="{TemplateBinding Text}">
                                 <Button.Content>
                                     <Path x:Name="Path" Data="M42.5,22A12.5,12.5 0 0,1 55,34.5A12.5,12.5 0 0,1 42.5,47C40.14,47 37.92,46.34 36,45.24L26.97,54.27C25.8,55.44 23.9,55.44 22.73,54.27C21.56,53.1 21.56,51.2 22.73,50.03L31.8,40.96C30.66,39.08 30,36.86 30,34.5A12.5,12.5 0 0,1 42.5,22M42.5,26A8.5,8.5 0 0,0 34,34.5A8.5,8.5 0 0,0 42.5,43A8.5,8.5 0 0,0 51,34.5A8.5,8.5 0 0,0 42.5,26Z"
                                            Fill="Gray" StrokeThickness="1" Stretch="Uniform" Width="18"/>
                                 </Button.Content>
-                                
+
                             </Button>
                         </Grid>
                     </Border>
@@ -137,7 +137,7 @@
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="BorderBrush" TargetName="border" Value="DarkGray"/>
-                            
+
                         </Trigger>
                         <Trigger SourceName="SearchBtn" Property="IsMouseOver" Value="True">
                             <Setter TargetName="Path" Property="Fill" Value="#FF00B1FF"></Setter>
@@ -159,5 +159,4 @@
             </MultiTrigger>
         </Style.Triggers>
     </Style>
-
 </ResourceDictionary>

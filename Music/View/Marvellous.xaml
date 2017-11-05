@@ -24,7 +24,7 @@
         </Grid.ColumnDefinitions>
         <ScrollViewer Grid.Column="0" CanContentScroll="True" VerticalScrollBarVisibility="Disabled">
             <exten:ScrollPanel x:Name="ScrollPanel">
-                <StackPanel Height="800">
+                <StackPanel Height="800" Background="AliceBlue">
                     <exten:FlipView x:Name="FlipView1st"
                                        Height="200"
                                        Margin="0 0 5 0"
