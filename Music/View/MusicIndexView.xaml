@@ -27,7 +27,18 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Row="0" Grid.Column="0">
+        <Rectangle
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Fill="White "
+            Opacity="0.25">
+            <Rectangle.Effect>
+                <exten:NoiseEffect Ratio="0.25" />
+
+            </Rectangle.Effect>
+        </Rectangle>
+        <DockPanel Grid.Row="0" Grid.Column="0" Margin="20,0,0,0">
+          
             <DockPanel DockPanel.Dock="Top" Margin="0,10,20,5">
                 <TextBlock Text="发现音乐" FontFamily="Nirmala UI" FontSize="12"  Foreground="Gray" DockPanel.Dock="Left" VerticalAlignment="Center"></TextBlock>
                 <TextBox x:Name="Searchbox" Text="{Binding SearchPara}" DockPanel.Dock="Right" Width="220" HorizontalAlignment="Right" Style="{DynamicResource SearchBox}" BorderBrush="#ffcccccc"
@@ -40,12 +51,6 @@
                 </TextBox>
 
             </DockPanel>
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="0,5,0,0">
-                <RadioButton Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0"  FontSize="16" FontFamily="Nirmala UI">精选</RadioButton>
-                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI">排行</RadioButton>
-                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI">歌单</RadioButton>
-                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI">电台</RadioButton>
-            </StackPanel>
         </DockPanel>
         <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding Marvellous}">
         </ContentControl>
@@ -57,6 +62,7 @@
                     <Binding ElementName="Searchbox" Path="Text"></Binding>
                 </MultiBinding>
             </StackPanel.Visibility>
+            
             <Border  Background="White" VerticalAlignment="Stretch" BorderBrush="Gray" BorderThickness="0.5,0,0.5,0.5">
                 <StackPanel x:Name="HotPanle">
                     <Border x:Name="border" Background="#ffcccccc">
@@ -110,8 +116,9 @@
                     <Binding ElementName="Searchbox" Path="IsKeyboardFocused"></Binding>
                  </MultiBinding>
             </StackPanel.Visibility>
+            
             <ListBox ItemsSource="{Binding Suggests}" BorderBrush="Gray" BorderThickness="1,0,1,1" Style="{StaticResource VirtualisedMetroListBox}"
-                      SelectedItem="{Binding SelectedItem,Mode=TwoWay}">
+                      SelectedItem="{Binding SelectedItem,Mode=TwoWay}" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding SearchCommand}"></i:InvokeCommandAction>

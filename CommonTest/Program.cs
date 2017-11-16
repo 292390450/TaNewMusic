@@ -17,6 +17,10 @@ namespace CommonTest
     {
         static void Main(string[] args)
         {
+            //IndexData data=new IndexData();
+            //data.GetIndexData();
+            var dsdasdas = MusicApi.GetIndexList();
+            var fdf = HttpClientHelper.GetAsync(dsdasdas).Result;
             var resss= SearchApi.GetKeySuggest("李");
             var str = MusicApi.GetKeySuggesUrl("修炼爱情");
             var ss = HttpClientHelper.GetAsync(str).Result;

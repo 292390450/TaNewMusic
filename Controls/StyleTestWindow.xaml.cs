@@ -21,6 +21,7 @@ namespace Controls
     /// </summary>
     public partial class StyleTestWindow : Window
     {
+        
         public StyleTestWindow()
         {
             InitializeComponent();

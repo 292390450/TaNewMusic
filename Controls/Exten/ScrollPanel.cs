@@ -52,11 +52,11 @@ namespace Controls.Exten
             var size = base.ArrangeOverride(finalSize);
             if (ScrollOwner != null)
             {
-                var yOffsetAnimation = new DoubleAnimation() { To = -VerticalOffset, Duration = TimeSpan.FromSeconds(0.1)
-                    };
-                _translate.BeginAnimation(TranslateTransform.YProperty, yOffsetAnimation);
+                var yOffsetAnimation = new DoubleAnimation() { To = -VerticalOffset, Duration = TimeSpan.FromSeconds(0.1),AccelerationRatio=0.25,DecelerationRatio=0.25
+                    , };
+                _translate.BeginAnimation(TranslateTransform.YProperty, yOffsetAnimation,HandoffBehavior.SnapshotAndReplace);
 
-                var xOffsetAnimation = new DoubleAnimation() { To = -HorizontalOffset, Duration = TimeSpan.FromSeconds(0.1),
+                var xOffsetAnimation = new DoubleAnimation() { To = -HorizontalOffset, Duration = TimeSpan.FromSeconds(0.1),AccelerationRatio=0.25,DecelerationRatio=0.25
                     
                 };
                 _translate.BeginAnimation(TranslateTransform.XProperty, xOffsetAnimation);
@@ -100,7 +100,7 @@ namespace Controls.Exten
         }
 
         const double _lineOffset = 20;
-        const double _wheelOffset = 40;
+        const double _wheelOffset = 50;
 
         //
 

@@ -23,6 +23,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid>
+       
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>

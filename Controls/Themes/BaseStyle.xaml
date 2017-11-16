@@ -5,6 +5,25 @@
                     mc:Ignorable="d">
 
     <ImageBrush x:Key="BackImage" ImageSource="../Image/19192_en_1.jpg"></ImageBrush>
+    <Style x:Key="SimpleBtn" TargetType="{x:Type Button}">
+        <Setter Property="BorderThickness" Value="0"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Background="{TemplateBinding Background}">
+                    <TextBlock x:Name="textblock" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Text="{TemplateBinding Content}"></TextBlock>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="Border" Property="IsMouseOver" Value="True">
+                            <Trigger.Setters>
+                                <Setter TargetName="textblock" Property="Foreground" Value="#FF00B1FF"></Setter>
+                            </Trigger.Setters>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style  x:Key="ButtonBase" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">

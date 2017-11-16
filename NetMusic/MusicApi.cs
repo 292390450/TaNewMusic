@@ -129,7 +129,10 @@ namespace NetMusic
         {
            return $"https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?tpl=3&page=detail&topid={topId}&type=top&song_begin={offset}&song_num={num}&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0";
         }
-
+        /// <summary>
+        /// 热门关键词的url
+        /// </summary>
+        /// <returns></returns>
         public static string GetHotKey()
         {
             return BaseAddress + "/splcloud/fcgi-bin/gethotkey.fcg?" + MustParas;
@@ -162,6 +165,19 @@ namespace NetMusic
         {
             return
                 $"https://c.y.qq.com/v8/fcg-bin/musicmall.fcg?cmd=get_album_buy_page&albumid={albumid}&p=0.8817215290873384&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq&needNewCode=0";
+        }
+        /// <summary>
+        /// 首页推荐
+        /// </summary>
+        /// <returns></returns>
+        public static string GetIndexList()
+        {
+            //0-1随机数
+            Random ran=new Random();
+            double r1 = ran.NextDouble();
+            double r2 = Math.Pow(10, 16);
+            string r3 = Math.Ceiling(Convert.ToDecimal(r1 * r2)).ToString();
+            return $"{BaseAddress}/v8/fcg-bin/fcg_first_yqq.fcg?format=json&tpl=v12&page=other&{MustParas}&rnd={r3}";
         }
         #region 额外
 

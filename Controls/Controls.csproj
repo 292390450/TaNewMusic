@@ -85,6 +85,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\packages\Telerik\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -94,9 +97,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exten\BlurMask.cs" />
     <Compile Include="Exten\Extensions.cs" />
     <Compile Include="Exten\FlipView.cs" />
     <Compile Include="Exten\MetroProgressBar.cs" />
+    <Compile Include="Exten\NoiseEffect.cs" />
     <Compile Include="Exten\ScrollPanel.cs" />
     <Compile Include="Exten\SuggestBox.cs" />
     <Compile Include="Exten\TaNewBarHelper.cs" />
@@ -174,6 +179,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Noise.ps" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -185,6 +191,16 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\19192_en_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\test.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\noise.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\收听.png" />
+    <Content Include="Noise.fx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

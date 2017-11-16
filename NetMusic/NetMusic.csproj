@@ -63,10 +63,15 @@
     <Compile Include="AlbumApi.cs" />
     <Compile Include="HttpClientHelper.cs" />
     <Compile Include="Mode\Album.cs" />
+    <Compile Include="Mode\Focus.cs" />
+    <Compile Include="Mode\Hotdiss.cs" />
+    <Compile Include="Mode\IndexData.cs" />
     <Compile Include="Mode\MusicianType.cs" />
     <Compile Include="Mode\Singer.cs" />
     <Compile Include="Mode\Song.cs" />
+    <Compile Include="Mode\Top.cs" />
     <Compile Include="Mode\TopList.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MusicApi.cs" />
     <Compile Include="SearchApi.cs" />
@@ -82,6 +87,13 @@
       <Project>{88403de8-51b8-4e97-bb44-48bbea32421a}</Project>
       <Name>TaNewHelper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="js\other.js" />
+    <Content Include="js\search.js" />
+    <Content Include="js\singer.js" />
+    <Content Include="js\URLConsts.js" />
+    <Content Include="js\utils.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

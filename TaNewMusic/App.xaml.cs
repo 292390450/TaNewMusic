@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using GalaSoft.MvvmLight.Threading;
+using NetMusic.Mode;
 using Prism.Unity;
 
 namespace TaNewMusic
@@ -27,6 +28,9 @@ namespace TaNewMusic
             {
                 Action waiteAction = () =>
                 {
+                    var indexdata=bootstrapper.Container.TryResolve<IndexData>();
+                    Action getIndexData = indexdata.GetIndexData;
+                    getIndexData.BeginInvoke(null, null);
                     Thread.Sleep(2000);
                     
                 };

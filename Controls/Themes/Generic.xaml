@@ -22,7 +22,15 @@
                             <RowDefinition Height="30"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Grid x:Name="titleBar" Background="#FFCCCCCC" Margin="0">
+                        <Grid x:Name="titleBar" Margin="0">
+                            <Grid.Background>
+                                <LinearGradientBrush EndPoint="1,0.6" StartPoint="0,0.6">
+                                    <GradientStop Color="#ffcccccc" Offset="0"/>
+                                    <GradientStop Color="White" Offset="0.27"/>
+                                    <GradientStop Color="#ffcccccc" Offset="0.5"/>
+                                    <GradientStop Color="#ffcccccc" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonDown">
                                     <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}},Path=WindowMoveCommand}"></i:InvokeCommandAction>
@@ -31,25 +39,25 @@
                             <Image Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}},Path=IconImage,Mode=TwoWay}" Height="20" Width="20" Margin="10,4,0,4" HorizontalAlignment="Left"/>
                             <Button x:Name="PART_RestoreButton" Visibility="{Binding Path=RestoreButtonVisibility,RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}}}"
                                         HorizontalAlignment="Right" Margin="0,0,30,0"   Style="{DynamicResource ButtonBase}"
-                                        Background="{Binding ElementName=titleBar,Path=Background}"  Width="30" Command="{Binding Path=MaxMinCommand,RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}}}"           
+                                       Background="#ffcccccc"  Width="30" Command="{Binding Path=MaxMinCommand,RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}}}"           
                                         BorderThickness="0">
                                 <Path x:Name="MinMaxPath" Data="M0.5,4.5L0.5,11.5 1.5,12.5 8.5,12.5 9.5,11.5 9.5,3.5 1.5,3.5z M3.5,6.5L3.5,9.5 6.5,9.5 6.5,6.5z M3.5,3.5L3.5,1.5 4.5,0.5 11.5,0.5 12.5,1.5 12.5,9.5 11.5,10.5 9.5,10.5 9.5,3.5z" Height="14" Stroke="White" Width="14"
                                           Fill="Black"/>
                             </Button>
                             <Button x:Name="PART_MaxButton"   Style="{DynamicResource ButtonBase}"
                                         HorizontalAlignment="Right" Margin="0,0,30,0" Visibility="{Binding Path=MaxButtonVisibility,RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}}}"
-                                        Background="{Binding ElementName=titleBar,Path=Background}"   Width="30"
+                                       Background="#ffcccccc"  Width="30"
                                         BorderThickness="0" Command="{Binding Path=MaxMinCommand,RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}}}">
                                 <Path  Data="M1.5,2.5L12.5,2.5 12.5,11.5 1.5,11.5z M4.5,5.5L9.5,5.5 9.5,8.5 4.5,8.5z" Height="14" Stroke="White" Width="14"
                                            Fill="Black"/>
 
                             </Button>
-                            <Button Background="{Binding ElementName=titleBar,Path=Background}"  HorizontalAlignment="Right" Margin="0,0,60,0" Width="30"
+                            <Button Background="#ffcccccc"  HorizontalAlignment="Right" Margin="0,0,60,0" Width="30"
                                         BorderThickness="0"  Style="{DynamicResource ButtonBase}" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}},
                                 Path=MinCommand}">
                                 <Path Data="M1.5,7.5L12.5,7.5 12.5,11.5 1.5,11.5z" Height="14" Stroke="White" Width="14" Fill="Black"/>
                             </Button>
-                            <Button Background="{Binding ElementName=titleBar,Path=Background}"  HorizontalAlignment="Right" Margin="0,0,0,0" Width="30" BorderThickness="0"
+                            <Button Background="#ffcccccc"  HorizontalAlignment="Right" Margin="0,0,0,0" Width="30" BorderThickness="0"
                                         Style="{DynamicResource CloseStyle}" Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type exten:WindowBase}},
                                 Path=CloseWindowCommand}">
                                 <Path Data="M1.5,3.5L2.5,2.5 4.5,2.5 6.5,4.5 8.5,2.5 10.5,2.5 11.5,3.5 8.5,6.5 8.5,7.5 11.5,10.5 10.5,11.5 8.5,11.5 6.5,9.5 4.5,11.5 2.5,11.5 1.5,10.5 4.5,7.5 4.5,6.5z" Height="14" Stroke="White" Width="14" Fill="Black"/>
@@ -62,7 +70,7 @@
         </Setter>
     </Style>
 
-    
+
 
     <Style TargetType="{x:Type exten:SuggestBox}">
         <Setter Property="Template">

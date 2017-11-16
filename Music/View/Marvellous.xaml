@@ -5,40 +5,49 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Music.View"
              xmlns:exten="clr-namespace:Controls.Exten;assembly=Controls"
+             xmlns:moreviews="clr-namespace:Music.View.MoreViews"
              mc:Ignorable="d" 
              d:DesignHeight="492" d:DesignWidth="852" Width="auto" Height="auto">
-    <UserControl.Resources>
-        <DataTemplate x:Key="FlipViewItemTemplete">
-            <Grid Background="#FFF7F7F7">
-                <Image Source="{Binding Path=Album.Cover}" Stretch="UniformToFill"/>
-                <Border VerticalAlignment="Bottom" Height="25" Opacity="0.5" Background="Gray">
-                </Border>
-                <TextBlock Text="{Binding Name}" VerticalAlignment="Bottom" Margin="20,2" FontFamily="Nirmala UI" Foreground="White"/>
-            </Grid>
-        </DataTemplate>
-    </UserControl.Resources>
+  
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="12"/>
+            <ColumnDefinition Width="5"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Column="0" CanContentScroll="True" VerticalScrollBarVisibility="Disabled">
-            <exten:ScrollPanel x:Name="ScrollPanel">
-                <StackPanel Height="800" Background="AliceBlue">
-                    <exten:FlipView x:Name="FlipView1st"
-                                       Height="200"
-                                       Margin="0 0 5 0"
-                                       CircularNavigation="True "
-                                       IsBannerEnabled="True " 
-                                       IsNavigationEnabled="True"
-                                       MouseOverGlowEnabled="True "
-                                       Orientation="Horizontal" ItemTemplate="{DynamicResource FlipViewItemTemplete}"  ItemsSource="{Binding Path=CoverSongs}"
-                                       >
-                    </exten:FlipView>
-                </StackPanel>
-            </exten:ScrollPanel>
-        </ScrollViewer>
-        <exten:TaNewScrollBar ScrollPanel="{Binding ElementName=ScrollPanel}" Grid.Column="1"></exten:TaNewScrollBar>
+        <Grid Background="Transparent" Grid.Row="1" ZIndex="2" VerticalAlignment="Top">
+            
+            <Rectangle
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Fill="White "
+                Opacity="0.25">
+                <Rectangle.Effect>
+                    <exten:NoiseEffect Ratio="0.25" />
+                    
+                </Rectangle.Effect>
+            </Rectangle>
+            <Rectangle Fill="White" Opacity="0.35">
+
+                <Rectangle.Effect>
+                    <BlurEffect KernelType="Gaussian " RenderingBias="Performance" Radius="6"></BlurEffect>
+                </Rectangle.Effect>
+            </Rectangle>
+            <StackPanel Orientation="Horizontal" Margin="20,5,0,0">
+                <RadioButton Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0"  FontSize="16" FontFamily="Nirmala UI" Command="{Binding TabChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self},Path=Content}"
+                              IsChecked="True">精选</RadioButton>
+                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI" Command="{Binding TabChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self},Path=Content}">排行</RadioButton>
+                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI" Command="{Binding TabChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self},Path=Content}">歌单</RadioButton>
+                <RadioButton  Style="{DynamicResource TitileRadioBtn}" Margin="0,0,10,0" FontSize="16" FontFamily="Nirmala UI" Command="{Binding TabChangedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self},Path=Content}">电台</RadioButton>
+            </StackPanel>
+         
+        </Grid>
+        <ContentControl Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding CurrentControl}">
+        </ContentControl>
+       
     </Grid>
 </UserControl>
 

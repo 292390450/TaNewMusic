@@ -10,6 +10,7 @@ using Prism.Modularity;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
 using NetMusic;
+using NetMusic.Mode;
 using TaNewMusic.ModuleHelper;
 
 
@@ -20,11 +21,13 @@ namespace TaNewMusic
         public Action InitCompleted;  
         private readonly CallbackLogger _callbackLogger=new CallbackLogger();
         SongApi _songApi=new SongApi();
+        IndexData _indexData=new IndexData();
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
             this.Container.RegisterInstance<CallbackLogger>(this._callbackLogger);
             Container.RegisterInstance<SongApi>(this._songApi);
+            Container.RegisterInstance<IndexData>(this._indexData);
         }
 
         public override void Run(bool runWithDefaultConfiguration)
